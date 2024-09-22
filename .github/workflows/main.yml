@@ -1,4 +1,4 @@
-name: Deploy React App to Rocky Linux 9
+name: Deploy
 
 on:
   push:
