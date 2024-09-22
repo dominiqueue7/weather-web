@@ -7,7 +7,16 @@ export const getFormattedDate = () => {
 
 export const getCurrentHourBaseTime = () => {
   const date = new Date();
-  return `${date.getHours().toString().padStart(2, '0')}00`;
+  const minutes = date.getMinutes();
+  const hours = date.getHours();
+
+  // 현재 시간이 정각으로부터 11분 이내인 경우, 이전 시간의 데이터를 사용
+  if (minutes < 11) {
+    const previousHour = (hours - 1 + 24) % 24; // 자정을 넘어가는 경우를 처리
+    return `${previousHour.toString().padStart(2, '0')}00`;
+  }
+
+  return `${hours.toString().padStart(2, '0')}00`;
 };
 
 export const getShortTermForecastBaseTime = () => {
