@@ -40,7 +40,7 @@ const CurrentWeather = () => {
           <WeatherItem icon={<Wind className="text-purple-500" />} label="남북바람" value={`${weatherData.VVV}m/s`} />
           <WeatherItem icon={<Droplets className="text-green-500" />} label="습도" value={`${weatherData.REH}%`} />
           <WeatherItem icon={<Sun className="text-yellow-500" />} label="강수형태" value={getPrecipitationType(weatherData.PTY)} />
-          <WeatherItem icon={<Zap className="text-yellow-600" />} label="낙뢰" value={`${weatherData.LGT}kA`} />
+          <WeatherItem icon={<Zap className="text-yellow-600" />} label="낙뢰" value={weatherData.LGT !== undefined ? `${weatherData.LGT}kA` : "정보없음"} />
           <WeatherItem icon={<Compass className="text-blue-600" />} label="풍향" value={`${weatherData.VEC}°`} />
           <WeatherItem icon={<Wind className="text-gray-500" />} label="풍속" value={`${weatherData.WSD}m/s`} />
         </div>
