@@ -106,35 +106,23 @@ const WeatherApp = () => {
 
   const getSkyCondition = (code) => {
     switch (parseInt(code)) {
-      case 1:
-        return '맑음';
-      case 3:
-        return '구름많음';
-      case 4:
-        return '흐림';
-      default:
-        return '알 수 없음';
+      case 1: return '맑음';
+      case 3: return '구름많음';
+      case 4: return '흐림';
+      default: return '알 수 없음';
     }
   };
 
   const getPrecipitationType = (code) => {
     switch (parseInt(code)) {
-      case 0:
-        return '없음';
-      case 1:
-        return '비';
-      case 2:
-        return '비/눈';
-      case 3:
-        return '눈';
-      case 5:
-        return '빗방울';
-      case 6:
-        return '빗방울눈날림';
-      case 7:
-        return '눈날림';
-      default:
-        return '알 수 없음';
+      case 0: return '없음';
+      case 1: return '비';
+      case 2: return '비/눈';
+      case 3: return '눈';
+      case 5: return '빗방울';
+      case 6: return '빗방울눈날림';
+      case 7: return '눈날림';
+      default: return '알 수 없음';
     }
   };
 
@@ -229,38 +217,26 @@ const WeatherApp = () => {
     return `${year}-${month}-${day}`;
   };
 
-  return (<div className="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen p-4">
-    <h1 className="text-4xl font-bold mb-8 text-center text-blue-800">한국 일기예보</h1>
+  return (
+    <div className="bg-white min-h-screen p-2">
+      <h1 className="text-3xl font-bold mb-4 text-center text-blue-800">한국 일기예보</h1>
 
-    <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-      <h2 className="text-2xl font-semibold mb-4 text-blue-700">현재 날씨</h2>
-      {renderCurrentWeather()}
-    </div>
+      <div className="bg-gray-50 rounded shadow p-3 mb-3">
+        <h2 className="text-xl font-semibold mb-2 text-blue-700">현재 날씨</h2>
+        {renderCurrentWeather()}
+      </div>
 
-    <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-      <h2
-          className="text-2xl font-semibold mb-4 flex justify-between items-center cursor-pointer text-blue-700"
-          onClick={() => toggleSection('shortTerm')}
-      >
-        초단기 예보
-        {expandedSection === 'shortTerm' ? <ChevronUp className="text-blue-500"/> :
-            <ChevronDown className="text-blue-500"/>}
-      </h2>
-      {expandedSection === 'shortTerm' && renderShortTermForecast()}
-    </div>
+      <div className="bg-gray-50 rounded shadow p-3 mb-3">
+        <h2 className="text-xl font-semibold mb-2 text-blue-700">초단기 예보</h2>
+        {renderShortTermForecast()}
+      </div>
 
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h2
-          className="text-2xl font-semibold mb-4 flex justify-between items-center cursor-pointer text-blue-700"
-          onClick={() => toggleSection('daily')}
-      >
-        단기 예보
-        {expandedSection === 'daily' ? <ChevronUp className="text-blue-500"/> :
-            <ChevronDown className="text-blue-500"/>}
-      </h2>
-      {expandedSection === 'daily' && renderDailyForecast()}
+      <div className="bg-gray-50 rounded shadow p-3">
+        <h2 className="text-xl font-semibold mb-2 text-blue-700">단기 예보</h2>
+        {renderDailyForecast()}
+      </div>
     </div>
-  </div>);
+  );
 };
 
 export default WeatherApp;
