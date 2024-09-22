@@ -3,7 +3,7 @@ export const getSkyCondition = (code) => {
     case 1: return '맑음';
     case 3: return '구름많음';
     case 4: return '흐림';
-    default: return '알 수 없음';
+    default: return '정보없음';
   }
 };
 
