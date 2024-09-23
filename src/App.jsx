@@ -12,8 +12,8 @@ function App() {
           <div className="container mx-auto p-4">
             <Routes>
               <Route path="/forecast" element={<CurrentWeather />} />
-              <Route path="/short-term" element={<ShortTermForecast />} />
-              <Route path="/daily" element={<DailyForecast />} />
+              <Route path="/forecast/short-term" element={<ShortTermForecast />} />
+              <Route path="/forecast/daily" element={<DailyForecast />} />
             </Routes>
           </div>
         </div>
