@@ -14,7 +14,7 @@ const ShortTermForecast = () => {
     getForecastData();
   }, []);
 
-  if (!forecast) return <p className="text-gray-600">시간대별 예보를 불러오는 중...</p>;
+  if (!forecast) return <p className="text-gray-600">시간 예보를 불러오는 중...</p>;
 
   const groupedForecasts = forecast.reduce((acc, item) => {
     if (!acc[item.fcstTime]) {
@@ -26,7 +26,7 @@ const ShortTermForecast = () => {
 
   return (
     <div className="bg-gray-50 rounded shadow p-6">
-      <h2 className="text-2xl font-semibold mb-4 text-blue-700">시간대별 예보</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-blue-700">시간 예보</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Object.entries(groupedForecasts).map(([time, data]) => (
           <div key={time} className="bg-white p-4 rounded-lg shadow">

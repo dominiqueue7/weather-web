@@ -14,7 +14,7 @@ const DailyForecast = () => {
     getForecastData();
   }, []);
 
-  if (!forecast) return <p className="text-gray-600">단기 예보를 불러오는 중...</p>;
+  if (!forecast) return <p className="text-gray-600">일일 예보를 불러오는 중...</p>;
 
   const groupForecastByDate = (forecastData) => {
     return forecastData.reduce((acc, item) => {
@@ -48,7 +48,7 @@ const DailyForecast = () => {
 
   return (
     <div className="bg-gray-50 rounded shadow p-6">
-      <h2 className="text-2xl font-semibold mb-4 text-blue-700">단기 예보</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-blue-700">일일 예보</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {dates.map((date, index) => (
           <div key={date} className="bg-white p-4 rounded-lg shadow">
