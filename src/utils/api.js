@@ -1,6 +1,6 @@
 import { API_KEY, getFormattedDate, getCurrentHourBaseTime, getShortTermForecastBaseTime, getDailyForecastBaseTime } from './helpers';
 
-const BASE_URL = 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0';
+const BASE_URL = '/api';
 
 export const fetchCurrentWeather = async () => {
   const baseTime = getCurrentHourBaseTime();
