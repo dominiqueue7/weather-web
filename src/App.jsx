@@ -6,9 +6,11 @@ import ShortTermForecast from './pages/ShortTermForecast';
 import DailyForecast from './pages/DailyForecast';
 import LocationSelector from './components/LocationSelector.jsx';
 import { getCurrentLocation } from './utils/locationUtils';
+import { getLocationInfo } from './utils/locationData';
 
 function App() {
   const [location, setLocation] = useState(null);
+  const [locationName, setLocationName] = useState('');
 
   useEffect(() => {
     getCurrentLocation().then(setLocation).catch(console.error);
@@ -16,7 +18,15 @@ function App() {
 
   const handleLocationChange = (newLocation) => {
     setLocation(newLocation);
-    console.log(newLocation);
+    setLocationName(`${newLocation.city} ${newLocation.district} ${newLocation.dong}`);
+  };
+
+  const useCurrentLocation = () => {
+    getCurrentLocation().then((currentLocation) => {
+      setLocation(currentLocation);
+      const locationInfo = getLocationInfo(currentLocation.city, currentLocation.district, currentLocation.dong);
+      setLocationName(`${locationInfo.city} ${locationInfo.district} ${locationInfo.dong}`);
+    }).catch(console.error);
   };
 
   return (
@@ -29,12 +39,13 @@ function App() {
               <LocationSelector onLocationChange={handleLocationChange} />
             </div>
             <button
-              onClick={() => getCurrentLocation().then(setLocation).catch(console.error)}
+              onClick={useCurrentLocation}
               className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
             >
               현재 위치 사용
             </button>
           </div>
+          {locationName && <p className="text-base mb-4">현재 위치: {locationName}</p>}
           {location && (
             <Routes>
               <Route path="/" element={<CurrentWeather x={location.x} y={location.y} />} />
