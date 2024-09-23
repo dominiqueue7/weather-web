@@ -18,15 +18,24 @@ function App() {
 
   const handleLocationChange = (newLocation) => {
     setLocation(newLocation);
-    setLocationName(`${newLocation.city} ${newLocation.district} ${newLocation.dong}`);
+    setLocationName(newLocation ? `${newLocation.city} ${newLocation.ku} ${newLocation.dong}` : '');
   };
 
   const useCurrentLocation = () => {
     getCurrentLocation().then((currentLocation) => {
-      setLocation(currentLocation);
-      const locationInfo = getLocationInfo(currentLocation.city, currentLocation.district, currentLocation.dong);
-      setLocationName(`${locationInfo.city} ${locationInfo.district} ${locationInfo.dong}`);
-    }).catch(console.error);
+      if (currentLocation) {
+        setLocation(currentLocation);
+        const locationInfo = getLocationInfo(currentLocation.city, currentLocation.ku, currentLocation.dong);
+        setLocationName(locationInfo ? `${locationInfo.city} ${locationInfo.ku} ${locationInfo.dong}` : '');
+      } else {
+        setLocation(null);
+        setLocationName('');
+      }
+    }).catch(error => {
+      console.error(error);
+      setLocation(null);
+      setLocationName('');
+    });
   };
 
   return (
