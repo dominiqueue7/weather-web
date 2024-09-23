@@ -33,7 +33,7 @@ const ShortTermForecast = () => {
             <h3 className="text-xl font-semibold mb-2">{time.slice(0, 2)}:{time.slice(2)}</h3>
             <div className="grid grid-cols-2 gap-2">
               <WeatherItem icon={<Thermometer className="text-red-500" />} label="기온" value={`${data.T1H}°C`} />
-              <WeatherItem icon={<CloudRain className="text-blue-500" />} label="강수량" value={`${data.RN1}mm`} />
+              <WeatherItem icon={<CloudRain className="text-blue-500" />} label="강수량" value={data.RN1 !== "강수없음" ?`${data.RN1}mm` : "강수없음"} />
               <WeatherItem icon={<Cloud className="text-gray-500" />} label="하늘상태" value={getSkyCondition(data.SKY)} />
               <WeatherItem icon={<Wind className="text-indigo-500" />} label="동서바람" value={`${data.UUU}m/s`} />
               <WeatherItem icon={<Wind className="text-purple-500" />} label="남북바람" value={`${data.VVV}m/s`} />
