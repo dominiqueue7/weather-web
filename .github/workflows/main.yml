@@ -31,5 +31,5 @@ jobs:
           git pull origin main
           yarn install --frozen-lockfile
           yarn build
-          cp -r dist/* /var/www/fc.supulime.com/
+          cp -r dist/* /var/www/forecast/
           sudo systemctl restart nginx
