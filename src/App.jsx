@@ -11,7 +11,7 @@ function App() {
           <Navbar />
           <div className="container mx-auto p-4">
             <Routes>
-              <Route path="/" element={<CurrentWeather />} />
+              <Route path="/forecast" element={<CurrentWeather />} />
               <Route path="/short-term" element={<ShortTermForecast />} />
               <Route path="/daily" element={<DailyForecast />} />
             </Routes>
