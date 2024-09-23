@@ -3,16 +3,16 @@ import { Thermometer, CloudRain, Cloud, Wind, Droplets, Sun, Zap, Compass } from
 import { fetchCurrentWeather } from '../utils/api';
 import { getSkyCondition, getPrecipitationType } from '../utils/weatherHelpers';
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ x, y }) => {
   const [currentWeather, setCurrentWeather] = useState(null);
 
   useEffect(() => {
     const getWeatherData = async () => {
-      const data = await fetchCurrentWeather();
+      const data = await fetchCurrentWeather(x, y);
       setCurrentWeather(data);
     };
     getWeatherData();
-  }, []);
+  }, [x, y]);
 
   if (!currentWeather) return <p className="text-gray-600">날씨 정보를 불러오는 중...</p>;
 

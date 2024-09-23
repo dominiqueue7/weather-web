@@ -3,16 +3,16 @@ import { Thermometer, CloudRain, Cloud, Wind, Droplets, Sun, Zap, Compass } from
 import { fetchShortTermForecast } from '../utils/api';
 import { getSkyCondition, getPrecipitationType } from '../utils/weatherHelpers';
 
-const ShortTermForecast = () => {
+const ShortTermForecast = ({ x, y }) => {
   const [forecast, setForecast] = useState(null);
 
   useEffect(() => {
     const getForecastData = async () => {
-      const data = await fetchShortTermForecast();
+      const data = await fetchShortTermForecast(x, y);
       setForecast(data);
     };
     getForecastData();
-  }, []);
+  }, [x, y]);
 
   if (!forecast) return <p className="text-gray-600">시간 예보를 불러오는 중...</p>;
 

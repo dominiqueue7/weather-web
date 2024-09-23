@@ -4,16 +4,16 @@ import { getFormattedDateFromFcstDate } from '../utils/dateHelpers';
 import { getDailyPrecipitationType, getSkyCondition } from '../utils/weatherHelpers';
 import { Thermometer, CloudRain, Cloud, Wind, Droplets, Sun, Compass, Snowflake } from 'lucide-react';
 
-const DailyForecast = () => {
+const DailyForecast = ({ x, y }) => {
   const [forecast, setForecast] = useState(null);
 
   useEffect(() => {
     const getForecastData = async () => {
-      const data = await fetchDailyForecast();
+      const data = await fetchDailyForecast(x, y);
       setForecast(data);
     };
     getForecastData();
-  }, []);
+  }, [x, y]);
 
   if (!forecast) return <p className="text-gray-600">일일 예보를 불러오는 중...</p>;
 
